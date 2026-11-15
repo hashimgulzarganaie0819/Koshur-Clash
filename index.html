@@ -1,1230 +1,1642 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <meta name="theme-color" content="#06060b" />
-  <title>Koshur Clash | Kasheer Esports Arena - Official App</title>
-  <meta name="description" content="Koshur Clash by Kasheer Esports Arena. Compete daily in Free Fire India & BGMI tournaments with fast withdrawals and strict anti-cheat protection." />
-
-  <link rel="dns-prefetch" href="https://huggingface.co" />
-  <link rel="preconnect" href="https://huggingface.co" crossorigin />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-
-  <link rel="preload" as="image" href="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file_00000000cac88210a0bca848510ed32f.png" fetchpriority="high" />
-  <link rel="preload" as="image" href="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file.png" fetchpriority="high" />
-
-  <link rel="icon" type="image/png" href="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file_00000000cac88210a0bca848510ed32f.png" />
-  <link rel="apple-touch-icon" href="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file_00000000cac88210a0bca848510ed32f.png" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  </noscript>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" />
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  </noscript>
-
-  <style>
-    :root {
-      --bg-dark: #06060b;
-      --bg-card: rgba(17, 17, 30, 0.75);
-      --purple-primary: #8b5cf6;
-      --purple-glow: #a855f7;
-      --cyan-accent: #06b6d4;
-      --cyan-light: #22d3ee;
-      --green-neon: #10b981;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-glass: rgba(139, 92, 246, 0.24);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      overflow-x: hidden;
-      padding-bottom: 92px;
-      line-height: 1.6;
-      text-rendering: optimizeSpeed;
-    }
-
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-      pointer-events: none;
-      background: 
-        radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.14) 0%, transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 50%);
-      transform: translateZ(0);
-    }
-
-    .grid-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
-      pointer-events: none;
-    }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(6, 6, 11, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 12px 0;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .brand-logo-img {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      object-fit: cover;
-      background: #111122;
-      box-shadow: 0 0 18px rgba(139, 92, 246, 0.55);
-      border: 1.5px solid rgba(34, 211, 238, 0.45);
-      flex-shrink: 0;
-    }
-
-    .brand-text h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      color: #fff;
-      line-height: 1.1;
-    }
-
-    .brand-text h1 span {
-      background: linear-gradient(90deg, #c084fc, #22d3ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .brand-text p {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.6px;
-      color: var(--cyan-light);
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-channel {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #34d399;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .btn-channel:hover {
-      background: rgba(16, 185, 129, 0.28);
-      transform: translateY(-1px);
-    }
-
-    .menu-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .mobile-drawer {
-      display: none;
-      background: rgba(12, 12, 22, 0.98);
-      border-bottom: 1px solid var(--border-glass);
-      padding: 18px 20px;
-    }
-
-    .mobile-drawer.open {
-      display: block;
-    }
-
-    .drawer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      list-style: none;
-    }
-
-    .drawer-links a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.03);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .hero {
-      padding: 34px 0 20px;
-      text-align: center;
-    }
-
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(34, 211, 238, 0.3);
-      padding: 7px 16px;
-      border-radius: 999px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #cbd5e1;
-      margin-bottom: 22px;
-      box-shadow: 0 0 25px rgba(6, 182, 212, 0.12);
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--green-neon);
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .pulse-dot::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2px solid var(--green-neon);
-      animation: ping 1.6s infinite;
-    }
-
-    @keyframes ping {
-      0% { transform: scale(0.8); opacity: 1; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-
-    .hero-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(28px, 7vw, 52px);
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #22d3ee 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc {
-      max-width: 620px;
-      margin: 0 auto 28px;
-      color: var(--text-muted);
-      font-size: 15.5px;
-      line-height: 1.65;
-    }
-
-    .hero-desc strong {
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .cta-group {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 440px;
-      margin: 0 auto 26px;
-    }
-
-    .btn-download {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      background: linear-gradient(135deg, #9333ea 0%, #6366f1 55%, #0891b2 100%);
-      color: #fff;
-      text-decoration: none;
-      padding: 16px 24px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px -5px rgba(147, 51, 234, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      will-change: transform;
-    }
-
-    .btn-download::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
-      transform: skewX(-20deg);
-      animation: shine 3.5s infinite;
-    }
-
-    @keyframes shine {
-      0% { left: -100%; }
-      40%, 100% { left: 160%; }
-    }
-
-    .btn-download:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 35px -5px rgba(147, 51, 234, 0.75);
-    }
-
-    .btn-download i {
-      font-size: 28px;
-    }
-
-    .btn-download-text {
-      text-align: left;
-    }
-
-    .btn-download-text .main-label {
-      display: block;
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-    }
-
-    .btn-download-text .sub-label {
-      display: block;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.88);
-      font-weight: 500;
-    }
-
-    .btn-whatsapp-hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(17, 24, 39, 0.78);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #fff;
-      text-decoration: none;
-      padding: 15px 24px;
-      border-radius: 16px;
-      font-size: 15.5px;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }
-
-    .btn-whatsapp-hero i {
-      color: #10b981;
-      font-size: 20px;
-    }
-
-    .btn-whatsapp-hero:hover {
-      background: rgba(16, 185, 129, 0.14);
-      border-color: #10b981;
-    }
-
-    .micro-features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      max-width: 440px;
-      margin: 0 auto 42px;
-      text-align: left;
-    }
-
-    .micro-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #cbd5e1;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 9px 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .micro-item i {
-      color: var(--cyan-light);
-      font-size: 14px;
-    }
-
-    .micro-item.link-item {
-      cursor: pointer;
-      color: var(--cyan-light);
-      text-decoration: underline;
-    }
-
-    .phone-showcase {
-      position: relative;
-      max-width: 330px;
-      margin: 0 auto 48px;
-      animation: floatPhone 4.5s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    @keyframes floatPhone {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -10px, 0); }
-    }
-
-    .phone-glow {
-      position: absolute;
-      inset: -15px;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.45), rgba(6, 182, 212, 0.45));
-      filter: blur(32px);
-      z-index: -1;
-      border-radius: 50px;
-      transform: translateZ(0);
-    }
-
-    .phone-frame {
-      background: #090912;
-      border: 4px solid #2e2e48;
-      border-radius: 42px;
-      padding: 12px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), inset 0 0 18px rgba(168, 85, 247, 0.35);
-      position: relative;
-    }
-
-    .phone-notch {
-      width: 95px;
-      height: 20px;
-      background: #050508;
-      border-radius: 20px;
-      margin: 2px auto 12px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .phone-screen {
-      background: radial-gradient(circle at 50% 25%, #3b0764 0%, #090914 72%);
-      border-radius: 30px;
-      padding: 20px 14px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(168, 85, 247, 0.28);
-    }
-
-    .big-logo-wrapper {
-      width: 100%;
-      max-width: 220px;
-      margin: 4px auto 14px;
-      border-radius: 20px;
-      padding: 6px;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(6, 182, 212, 0.25));
-      border: 1.5px solid rgba(255, 255, 255, 0.22);
-      box-shadow: 0 0 28px rgba(168, 85, 247, 0.55);
-      overflow: hidden;
-    }
-
-    .big-logo-img {
-      width: 100%;
-      height: auto;
-      max-height: 170px;
-      object-fit: contain;
-      border-radius: 14px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .screen-tag {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: var(--cyan-light);
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .screen-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 21px;
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.15;
-      margin-bottom: 6px;
-      text-shadow: 0 0 15px rgba(168, 85, 247, 0.65);
-    }
-
-    .screen-sub {
-      font-size: 11px;
-      color: #cbd5e1;
-      margin-bottom: 16px;
-      letter-spacing: 1.5px;
-      font-weight: 700;
-    }
-
-    .screen-badges {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .s-badge {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 7px 4px;
-      font-size: 9px;
-      font-weight: 700;
-      color: #e2e8f0;
-    }
-
-    .s-badge i {
-      display: block;
-      font-size: 13px;
-      color: #c084fc;
-      margin-bottom: 4px;
-    }
-
-    .stats-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-glass);
-      border-radius: 24px;
-      padding: 22px;
-      max-width: 540px;
-      margin: 0 auto 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-    }
-
-    .stat-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .stat-row:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .stat-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .stat-icon.cyan { background: rgba(6, 182, 212, 0.15); color: #22d3ee; }
-    .stat-icon.gold { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
-    .stat-icon.green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
-    .stat-icon.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
-
-    .stat-info h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.1;
-    }
-
-    .stat-info p {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 3px;
-      font-weight: 500;
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(139, 92, 246, 0.15);
-      border: 1px solid rgba(139, 92, 246, 0.35);
-      color: #c084fc;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(22px, 5vw, 34px);
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .section-sub {
-      color: var(--text-muted);
-      font-size: 14.5px;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .community-box {
-      background: linear-gradient(135deg, rgba(28, 18, 56, 0.85), rgba(11, 27, 46, 0.85));
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      border-radius: 24px;
-      padding: 30px 22px;
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      max-width: 520px;
-      margin: 22px auto 0;
-    }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 13px 16px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 14px;
-      color: #fff;
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.2s ease;
-    }
-
-    .social-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .social-btn.wa { border-color: rgba(16, 185, 129, 0.4); }
-    .social-btn.wa i { color: #10b981; font-size: 18px; }
-    .social-btn.yt { border-color: rgba(239, 68, 68, 0.4); }
-    .social-btn.yt i { color: #ef4444; font-size: 18px; }
-    .social-btn.ig { border-color: rgba(236, 72, 153, 0.4); }
-    .social-btn.ig i { color: #ec4899; font-size: 18px; }
-    .social-btn.sc { border-color: rgba(250, 204, 21, 0.4); }
-    .social-btn.sc i { color: #facc15; font-size: 18px; }
-
-    .footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 44px 0 30px;
-      background: rgba(4, 4, 9, 0.92);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      margin-bottom: 32px;
-    }
-
-    .footer-desc {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin: 14px 0 18px;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 10px;
-    }
-
-    .footer-socials a {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .footer-socials a:hover {
-      background: var(--purple-primary);
-      border-color: var(--purple-primary);
-      transform: translateY(-2px);
-    }
-
-    .footer-col h4 {
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 14px;
-      color: #fff;
-    }
-
-    .footer-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-list li, .footer-list a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-list i {
-      color: var(--green-neon);
-      font-size: 13px;
-    }
-
-    .disclaimer-box {
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      padding-top: 22px;
-      text-align: center;
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .disclaimer-box p {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
-
-    .sticky-bar {
-      position: fixed;
-      bottom: 12px;
-      left: 12px;
-      right: 12px;
-      max-width: 520px;
-      margin: 0 auto;
-      background: rgba(15, 15, 28, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      border-radius: 18px;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 99;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.75);
-    }
-
-    .sticky-left {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .sticky-logo-img {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 1px solid rgba(34, 211, 238, 0.4);
-      background: #111122;
-      flex-shrink: 0;
-    }
-
-    .sticky-meta h5 {
-      font-size: 14px;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .sticky-meta span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      color: #34d399;
-      font-weight: 600;
-    }
-
-    .btn-sticky-get {
-      background: linear-gradient(135deg, #9333ea, #6366f1);
-      color: #fff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      padding: 10px 18px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 15px rgba(147, 51, 234, 0.45);
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(6px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 200;
-    }
-
-    .modal-backdrop.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: #111122;
-      border: 1px solid var(--border-glass);
-      border-radius: 22px;
-      max-width: 420px;
-      width: 100%;
-      padding: 24px;
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: rgba(255, 255, 255, 0.08);
-      border: none;
-      color: #fff;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .step-list {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      list-style: none;
-    }
-
-    .step-list li {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 13.5px;
-      color: #e2e8f0;
-    }
-
-    .step-list strong {
-      color: var(--cyan-light);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Army — Official Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #05070E;
+            --liquid-glass: rgba(255, 255, 255, 0.06);
+            --liquid-glass-Strong: rgba(255, 255, 255, 0.10);
+            --liquid-border: rgba(255, 255, 255, 0.14);
+            --liquid-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+            --ios-blue: #0A84FF;
+            --ios-cyan: #5AC8FA;
+            --ios-green: #30D158;
+            --ios-amber: #FF9F0A;
+            --ios-red: #FF453A;
+            --ios-purple: #BF5AF2;
+            --text-main: #FFFFFF;
+            --text-sub: rgba(235, 235, 245, 0.65);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* ==========================================
+           SKELETON SCREEN & SHIMMER UI STYLES
+           ========================================== */
+        @keyframes shimmerWave {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .sk-shimmer {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.05) 25%,
+                rgba(255, 255, 255, 0.16) 50%,
+                rgba(255, 255, 255, 0.05) 75%
+            );
+            background-size: 200% 100%;
+            animation: shimmerWave 1.5s infinite linear;
+            border-radius: 10px;
+        }
+
+        /* Skeleton Wrapper */
+        #skeleton-loader {
+            width: 100%;
+            transition: opacity 0.35s ease;
+        }
+
+        #skeleton-loader.hidden {
+            display: none;
+        }
+
+        .sk-card {
+            background: var(--liquid-glass);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--liquid-border);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sk-pill { width: 140px; height: 24px; border-radius: 50px; margin-bottom: 16px; }
+        .sk-title { width: 82%; height: 30px; margin-bottom: 12px; border-radius: 8px; }
+        .sk-text-1 { width: 96%; height: 15px; margin-bottom: 8px; border-radius: 6px; }
+        .sk-text-2 { width: 70%; height: 15px; margin-bottom: 22px; border-radius: 6px; }
+        .sk-btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .sk-btn { height: 48px; border-radius: 16px; }
+        .sk-heading { width: 170px; height: 22px; margin: 26px 0 14px 4px; border-radius: 6px; }
+        .sk-icon-box { width: 42px; height: 42px; border-radius: 13px; margin-bottom: 12px; }
+
+        /* Image Shimmer Wrapper (For Real Images while loading) */
+        .img-skeleton {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.05) 25%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.05) 75%
+            );
+            background-size: 200% 100%;
+            animation: shimmerWave 1.5s infinite linear;
+            opacity: 0.85;
+            transition: opacity 0.4s ease;
+        }
+
+        .img-loaded {
+            background: none !important;
+            animation: none !important;
+            opacity: 1;
+        }
+
+        /* Hide real content while skeleton is active */
+        #real-content.loading-state {
+            display: none;
+        }
+
+        /* ==========================================
+           ORIGINAL DESIGN STYLES
+           ========================================== */
+        .liquid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 0%, #0d1528 0%, #05070e 75%);
+        }
+
+        .liquid-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(85px);
+            opacity: 0.55;
+            animation: floatOrb 18s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, #0A84FF, transparent 70%);
+            top: -80px;
+            left: -80px;
+        }
+
+        .orb-2 {
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, #BF5AF2, transparent 70%);
+            top: 35%;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #30D158, transparent 70%);
+            bottom: -60px;
+            left: 10%;
+            opacity: 0.35;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -40px) scale(1.12); }
+            100% { transform: translate(-25px, 25px) scale(0.95); }
+        }
+
+        @keyframes iosSpringUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .anim-item {
+            opacity: 0;
+            animation: iosSpringUp 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .d-1 { animation-delay: 0.05s; }
+        .d-2 { animation-delay: 0.12s; }
+        .d-3 { animation-delay: 0.19s; }
+        .d-4 { animation-delay: 0.26s; }
+        .d-5 { animation-delay: 0.33s; }
+        .d-6 { animation-delay: 0.40s; }
+
+        .top-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            background: rgba(8, 11, 20, 0.68);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 14px 20px 12px 20px;
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: 1020px;
+            margin: 0 auto;
+        }
+
+        .brand-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .brand-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: #FFFFFF;
+        }
+
+        .brand-mini-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .server-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(48, 209, 88, 0.14);
+            border: 1px solid rgba(48, 209, 88, 0.32);
+            box-shadow: var(--liquid-highlight);
+            color: var(--ios-green);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 13px;
+            border-radius: 50px;
+        }
+
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--ios-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--ios-green);
+            animation: pulseDot 1.8s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        .nav-pills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+            padding: 5px;
+            border-radius: 16px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-sub);
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 600;
+            padding: 10px 6px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+        }
+
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.16);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), var(--liquid-highlight);
+            backdrop-filter: blur(12px);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 26px 20px 40px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tab-section {
+            display: none;
+            width: 100%;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
+        .glass-card {
+            background: var(--liquid-glass);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid var(--liquid-border);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32), var(--liquid-highlight);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .section-heading {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #FFFFFF;
+            margin: 26px 0 14px 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-sub {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        .hero-banner {
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(10, 132, 255, 0.16);
+            border: 1px solid rgba(10, 132, 255, 0.35);
+            color: var(--ios-cyan);
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 5px 13px;
+            border-radius: 50px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+            line-height: 1.22;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #B4E0FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 14.5px;
+            color: var(--text-sub);
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--ios-blue);
+            color: #FFFFFF;
+            font-size: 14.5px;
+            font-weight: 700;
+            padding: 14px 18px;
+            border-radius: 16px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 8px 22px rgba(10, 132, 255, 0.35), var(--liquid-highlight);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-highlight);
+            color: #FFFFFF;
+            font-size: 14.5px;
+            font-weight: 600;
+            padding: 14px 18px;
+            border-radius: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-glass:active {
+            transform: scale(0.97);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            background: var(--liquid-glass);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-highlight);
+            border-radius: 22px;
+            padding: 20px;
+        }
+
+        .f-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .f-title {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        .f-desc {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        .dev-profile-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .dev-info h3 {
+            font-size: 16.5px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .dev-info p {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+
+        .dev-tag {
+            background: rgba(191, 90, 242, 0.16);
+            border: 1px solid rgba(191, 90, 242, 0.35);
+            color: #E0B0FF;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .app-header-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+            background-color: #121521;
+        }
+
+        .app-name {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            color: #FFFFFF;
+            line-height: 1.2;
+        }
+
+        .app-dev {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--ios-blue);
+            margin-top: 3px;
+        }
+
+        .app-tag {
+            font-size: 12.5px;
+            color: var(--text-sub);
+            margin-top: 5px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: var(--liquid-glass);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-highlight);
+            border-radius: 20px;
+            padding: 16px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 17px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+
+        .download-btn-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, #0A84FF 0%, #0066CC 100%);
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 17px 0;
+            border-radius: 18px;
+            box-shadow: 0 10px 28px rgba(10, 132, 255, 0.38), var(--liquid-highlight);
+            margin-bottom: 26px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .download-btn-main:active {
+            transform: scale(0.97);
+        }
+
+        .gallery {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 14px;
+            margin-bottom: 24px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .screenshot {
+            height: 275px;
+            min-width: 145px;
+            border-radius: 18px;
+            object-fit: cover;
+            scroll-snap-align: start;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            background-color: #121521;
+        }
+
+        .screenshot:active {
+            transform: scale(0.97);
+        }
+
+        .about-card {
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .about-card:active {
+            transform: scale(0.98);
+            background: var(--liquid-glass-Strong);
+        }
+
+        .about-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .about-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .about-arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+
+        .about-preview {
+            font-size: 13.5px;
+            color: var(--text-sub);
+        }
+
+        .support-dm-card {
+            background: linear-gradient(135deg, rgba(10, 132, 255, 0.16) 0%, rgba(191, 90, 242, 0.16) 100%);
+            border: 1px solid rgba(10, 132, 255, 0.35);
+        }
+
+        .support-title {
+            font-size: 19px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .support-desc {
+            font-size: 13.5px;
+            color: var(--text-sub);
+            margin-bottom: 16px;
+        }
+
+        .dm-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 22px rgba(221, 42, 123, 0.35), var(--liquid-highlight);
+            transition: transform 0.2s ease;
+        }
+
+        .dm-btn:active {
+            transform: scale(0.97);
+        }
+
+        .social-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--liquid-glass);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-highlight);
+            border-radius: 18px;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #FFFFFF;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .social-item:active {
+            transform: scale(0.98);
+            background: var(--liquid-glass-Strong);
+        }
+
+        .social-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .social-icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            flex-shrink: 0;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .bg-insta { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+        .bg-yt { background: #FF0000; }
+        .bg-tg { background: #229ED9; }
+        .bg-wa { background: #25D366; }
+        .bg-snap { background: #FFFC00; color: #000000; }
+        .bg-kick { background: #53FC18; color: #000000; }
+
+        .social-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .social-sub {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .social-go {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ios-cyan);
+            background: rgba(90, 200, 250, 0.12);
+            padding: 6px 12px;
+            border-radius: 50px;
+        }
+
+        .warning-banner {
+            background: rgba(255, 69, 58, 0.12);
+            border: 1px solid rgba(255, 69, 58, 0.4);
+            box-shadow: var(--liquid-highlight);
+            border-radius: 22px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .warn-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #FF6961;
+            margin-bottom: 8px;
+        }
+
+        .warn-text {
+            font-size: 13.5px;
+            color: #FFD3D0;
+            line-height: 1.6;
+        }
+
+        .os-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .os-card {
+            background: var(--liquid-glass);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-highlight);
+            border-radius: 20px;
+            padding: 18px;
+        }
+
+        .os-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .badge-saf {
+            background: rgba(48, 209, 88, 0.15);
+            color: var(--ios-green);
+            border: 1px solid rgba(48, 209, 88, 0.35);
+        }
+
+        .badge-shizuku {
+            background: rgba(10, 132, 255, 0.18);
+            color: var(--ios-cyan);
+            border: 1px solid rgba(10, 132, 255, 0.4);
+        }
+
+        .os-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .os-desc {
+            font-size: 12.5px;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: rgba(10, 132, 255, 0.18);
+            border: 1px solid rgba(10, 132, 255, 0.4);
+            color: var(--ios-cyan);
+            font-size: 15px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            font-size: 13.5px;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 26px 0 10px 0;
+            margin-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            color: #FFFFFF;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .sheet-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.68);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .sheet-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .bottom-sheet {
+            width: 100%;
+            max-width: 680px;
+            max-height: 82vh;
+            background: rgba(20, 24, 36, 0.94);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 28px 28px 0 0;
+            padding: 14px 22px 32px 22px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sheet-overlay.open .bottom-sheet {
+            transform: translateY(0);
+        }
+
+        .sheet-handle {
+            width: 42px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 10px;
+            margin: 0 auto 14px auto;
+        }
+
+        .sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+            margin-bottom: 16px;
+        }
+
+        .sheet-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .sheet-close {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #FFFFFF;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sheet-body {
+            overflow-y: auto;
+            font-size: 14px;
+            color: #E2E8F0;
+            line-height: 1.65;
+            white-space: pre-line;
+            padding-right: 4px;
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(12px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 300;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 88vh;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 34px;
+            }
+            .feature-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .screenshot {
+                height: 340px;
+                min-width: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-grid, .os-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="ambient-bg"></div>
-  <div class="grid-overlay"></div>
-
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a href="#" class="brand">
-        <img 
-          src="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file_00000000cac88210a0bca848510ed32f.png" 
-          alt="Koshur Clash Logo" 
-          class="brand-logo-img"
-          width="44" 
-          height="44" 
-          fetchpriority="high" 
-          decoding="async" 
-        />
-        <div class="brand-text">
-          <h1>KOSHUR <span>CLASH</span></h1>
-          <p>Kasheer Esports Arena</p>
-        </div>
-      </a>
-
-      <div class="nav-actions">
-        <a href="https://whatsapp.com/channel/0029Vb92x6m1NCrZSoq80s3L" target="_blank" rel="noopener" class="btn-channel">
-          <i class="fa-brands fa-whatsapp"></i> Channel
-        </a>
-        <button class="menu-toggle" id="menuBtn" aria-label="Toggle Menu">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
+    <div class="liquid-bg">
+        <div class="liquid-orb orb-1"></div>
+        <div class="liquid-orb orb-2"></div>
+        <div class="liquid-orb orb-3"></div>
     </div>
 
-    <div class="mobile-drawer" id="mobileDrawer">
-      <ul class="drawer-links">
-        <li><a href="#stats">Arena Live Stats <i class="fa-solid fa-chevron-right"></i></a></li>
-        <li><a href="#community">Official Social Links <i class="fa-solid fa-chevron-right"></i></a></li>
-        <li><a href="javascript:void(0)" onclick="openInstallModal()">How to Install APK? <i class="fa-solid fa-circle-info"></i></a></li>
-      </ul>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <div class="live-pill">
-        <span class="pulse-dot"></span>
-        <span>Kasheer's #1 Esports Platform • Daily Custom Rooms & Prizes</span>
-      </div>
-
-      <h2 class="hero-title">
-        RULE THE VALLEY.<br />
-        <span class="gradient-text">PLAY & WIN DAILY.</span>
-      </h2>
-
-      <p class="hero-desc">
-        Welcome to <strong>Kasheer Esports Arena</strong>. Compete in action-packed daily matches on <strong>Koshur Clash</strong> across <strong>Free Fire India & BGMI</strong> with exciting prize pools, strict <strong>POV anti-cheat</strong> verification, and instant rewards.
-      </p>
-
-      <div class="cta-group">
-        <a href="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/Koshur%20Clash.apk?download=true" class="btn-download">
-          <i class="fa-brands fa-android"></i>
-          <div class="btn-download-text">
-            <span class="main-label">Download Koshur Clash</span>
-            <span class="sub-label">Official APK • Fast & Secure • Android 7.0+</span>
-          </div>
-        </a>
-
-        <a href="https://whatsapp.com/channel/0029Vb92x6m1NCrZSoq80s3L" target="_blank" rel="noopener" class="btn-whatsapp-hero">
-          <i class="fa-brands fa-whatsapp"></i> Join Official WhatsApp Channel
-        </a>
-      </div>
-
-      <div class="micro-features">
-        <div class="micro-item">
-          <i class="fa-solid fa-bolt"></i> Fast Prize Payouts
-        </div>
-        <div class="micro-item">
-          <i class="fa-solid fa-shield-halved"></i> POV Anti-Cheat Shield
-        </div>
-        <div class="micro-item">
-          <i class="fa-solid fa-headset"></i> 24/7 Gamer Support
-        </div>
-        <div class="micro-item link-item" onclick="openInstallModal()">
-          <i class="fa-solid fa-circle-question"></i> How to Install APK?
-        </div>
-      </div>
-
-      <div class="phone-showcase">
-        <div class="phone-glow"></div>
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="big-logo-wrapper">
-              <img 
-                src="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file.png" 
-                alt="Kasheer Esports Arena Banner Logo" 
-                class="big-logo-img"
-                width="210"
-                height="160"
-                fetchpriority="high"
-                decoding="async"
-              />
+    <header class="top-header">
+        <div class="header-inner">
+            <div class="brand-row">
+                <div class="brand-title">
+                    <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/file_0000000043f082098c6474ec9255818b.png" alt="Unique Army Logo" class="brand-mini-logo img-skeleton" onload="this.classList.add('img-loaded')">
+                    <span>Unique Army</span>
+                </div>
+                <div class="server-pill">
+                    <span class="online-dot"></span>
+                    Server Online
+                </div>
             </div>
-            <span class="screen-tag">Kasheer Esports Arena</span>
-            <div class="screen-title">WELCOME TO<br/>KOSHUR CLASH</div>
-            <div class="screen-sub">PLAY • COMPETE • DOMINATE</div>
 
-            <div class="screen-badges">
-              <div class="s-badge">
-                <i class="fa-solid fa-lock"></i>
-                100% Safe
-              </div>
-              <div class="s-badge">
-                <i class="fa-solid fa-headset"></i>
-                24/7 Help
-              </div>
-              <div class="s-badge">
-                <i class="fa-solid fa-users"></i>
-                Refer & Earn
-              </div>
-              <div class="s-badge">
-                <i class="fa-solid fa-gamepad"></i>
-                Daily Matches
-              </div>
+            <nav class="nav-pills">
+                <button class="nav-btn active" onclick="switchTab('home', this)">Home</button>
+                <button class="nav-btn" onclick="switchTab('download', this)">Download</button>
+                <button class="nav-btn" onclick="switchTab('community', this)">Community</button>
+                <button class="nav-btn" onclick="switchTab('help', this)">Help</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ==========================================
+             1. SKELETON SCREEN PLACEHOLDER UI
+             ========================================== -->
+        <div id="skeleton-loader">
+            <!-- Hero Skeleton Card -->
+            <div class="sk-card">
+                <div class="sk-shimmer sk-pill"></div>
+                <div class="sk-shimmer sk-title"></div>
+                <div class="sk-shimmer sk-text-1"></div>
+                <div class="sk-shimmer sk-text-2"></div>
+                <div class="sk-btn-row">
+                    <div class="sk-shimmer sk-btn"></div>
+                    <div class="sk-shimmer sk-btn"></div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="stats-card" id="stats">
-        <div class="stat-row">
-          <div class="stat-icon cyan"><i class="fa-solid fa-users"></i></div>
-          <div class="stat-info">
-            <h3 class="counter" data-target="25000" data-suffix="+">0+</h3>
-            <p>Active Verified Gamers</p>
-          </div>
-        </div>
+            <!-- Section Heading Skeleton -->
+            <div class="sk-shimmer sk-heading"></div>
 
-        <div class="stat-row">
-          <div class="stat-icon gold"><i class="fa-solid fa-coins"></i></div>
-          <div class="stat-info">
-            <h3 class="counter" data-target="1000000" data-prefix="₹" data-suffix="+">₹0+</h3>
-            <p>Total Rewards Distributed</p>
-          </div>
-        </div>
-
-        <div class="stat-row">
-          <div class="stat-icon green"><i class="fa-solid fa-trophy"></i></div>
-          <div class="stat-info">
-            <h3 class="counter" data-target="1500" data-suffix="+">0+</h3>
-            <p>Tournaments & Custom Rooms Hosted</p>
-          </div>
-        </div>
-
-        <div class="stat-row">
-          <div class="stat-icon purple"><i class="fa-solid fa-star"></i></div>
-          <div class="stat-info">
-            <h3>4.9 / 5.0</h3>
-            <p>Player Trust & Fair-Play Rating</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="community" class="community-box">
-      <div class="section-tag"><i class="fa-solid fa-bolt"></i> Kasheer Esports Arena</div>
-      <h2 class="section-title">Connect With Our <span class="gradient-text">Community</span></h2>
-      <p class="section-sub">Follow our official channels for daily tournament schedules, live streams, giveaway codes, and winner announcements.</p>
-
-      <div class="social-grid">
-        <a href="https://whatsapp.com/channel/0029Vb92x6m1NCrZSoq80s3L" target="_blank" rel="noopener" class="social-btn wa">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="https://youtube.com/@kasheer_esports?si=oN0X5VtYuF7zRRoZ" target="_blank" rel="noopener" class="social-btn yt">
-          <i class="fa-brands fa-youtube"></i> YouTube
-        </a>
-        <a href="https://www.instagram.com/with._hashim27?exln=bGxpem9ocW1xMnJi" target="_blank" rel="noopener" class="social-btn ig">
-          <i class="fa-brands fa-instagram"></i> Instagram
-        </a>
-        <a href="https://www.snapchat.com/add/ganaie_hashim00?share_id=UiCT45EEuws&locale=en-US" target="_blank" rel="noopener" class="social-btn sc">
-          <i class="fa-brands fa-snapchat"></i> Snapchat
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="#" class="brand">
-            <img 
-              src="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file_00000000cac88210a0bca848510ed32f.png" 
-              alt="Koshur Clash Logo" 
-              class="brand-logo-img"
-              width="44" 
-              height="44" 
-              loading="lazy" 
-              decoding="async" 
-            />
-            <div class="brand-text">
-              <h1>KOSHUR <span>CLASH</span></h1>
-              <p>Kasheer Esports Arena</p>
+            <!-- 4 Feature Grid Skeleton Boxes -->
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="sk-shimmer sk-icon-box"></div>
+                    <div class="sk-shimmer" style="width: 65%; height: 18px; margin-bottom: 10px;"></div>
+                    <div class="sk-shimmer" style="width: 95%; height: 13px; margin-bottom: 6px;"></div>
+                    <div class="sk-shimmer" style="width: 75%; height: 13px;"></div>
+                </div>
+                <div class="feature-item">
+                    <div class="sk-shimmer sk-icon-box"></div>
+                    <div class="sk-shimmer" style="width: 65%; height: 18px; margin-bottom: 10px;"></div>
+                    <div class="sk-shimmer" style="width: 95%; height: 13px; margin-bottom: 6px;"></div>
+                    <div class="sk-shimmer" style="width: 75%; height: 13px;"></div>
+                </div>
+                <div class="feature-item">
+                    <div class="sk-shimmer sk-icon-box"></div>
+                    <div class="sk-shimmer" style="width: 65%; height: 18px; margin-bottom: 10px;"></div>
+                    <div class="sk-shimmer" style="width: 95%; height: 13px; margin-bottom: 6px;"></div>
+                    <div class="sk-shimmer" style="width: 75%; height: 13px;"></div>
+                </div>
+                <div class="feature-item">
+                    <div class="sk-shimmer sk-icon-box"></div>
+                    <div class="sk-shimmer" style="width: 65%; height: 18px; margin-bottom: 10px;"></div>
+                    <div class="sk-shimmer" style="width: 95%; height: 13px; margin-bottom: 6px;"></div>
+                    <div class="sk-shimmer" style="width: 75%; height: 13px;"></div>
+                </div>
             </div>
-          </a>
-          <p class="footer-desc">
-            Kasheer Esports Arena is a premier competitive gaming destination where players showcase their skills in Koshur Clash, compete in fair tournaments, and win exciting rewards.
-          </p>
-          <div class="footer-socials">
-            <a href="https://whatsapp.com/channel/0029Vb92x6m1NCrZSoq80s3L" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://youtube.com/@kasheer_esports?si=oN0X5VtYuF7zRRoZ" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.instagram.com/with._hashim27?exln=bGxpem9ocW1xMnJi" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.snapchat.com/add/ganaie_hashim00?share_id=UiCT45EEuws&locale=en-US" target="_blank" rel="noopener" aria-label="Snapchat"><i class="fa-brands fa-snapchat"></i></a>
-          </div>
+
+            <!-- Bottom Profile Skeleton Card -->
+            <div class="sk-card" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="width: 60%;">
+                    <div class="sk-shimmer" style="width: 140px; height: 18px; margin-bottom: 8px;"></div>
+                    <div class="sk-shimmer" style="width: 200px; height: 13px;"></div>
+                </div>
+                <div class="sk-shimmer" style="width: 110px; height: 28px; border-radius: 50px;"></div>
+            </div>
         </div>
 
-        <div class="footer-col">
-          <h4>Supported Games</h4>
-          <ul class="footer-list">
-            <li><i class="fa-solid fa-fire"></i> Free Fire India</li>
-            <li><i class="fa-solid fa-crosshairs"></i> BGMI</li>
-          </ul>
+        <!-- ==========================================
+             2. REAL WEBSITE CONTENT
+             ========================================== -->
+        <div id="real-content" class="loading-state">
+            <section id="tab-home" class="tab-section active">
+                
+                <div class="glass-card hero-banner anim-item d-1">
+                    <div class="hero-badge">✨ OFFICIAL TOOL 2026-27</div>
+                    <h1 class="hero-title">Experience the Next-Gen Hologram Utility.</h1>
+                    <p class="hero-desc">
+                        Welcome to the official Unique Tool portal. Designed with a clean, ultra-responsive interface to help you download, apply, and remove Hologram files effortlessly with full support for Android 1 through Android 17.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="triggerTabClick('download')">
+                            Get the App →
+                        </button>
+                        <button class="btn-glass" onclick="triggerTabClick('help')">
+                            Setup Guide
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-heading anim-item d-2">
+                    <span>Platform Highlights</span>
+                    <span class="section-sub">Built for Performance</span>
+                </div>
+
+                <div class="feature-grid anim-item d-3">
+                    <div class="feature-item">
+                        <div class="f-icon">⚡</div>
+                        <div class="f-title">One-Tap Hologram</div>
+                        <div class="f-desc">Easily apply or remove Hologram files for both Free Fire and Free Fire Max with real-time progress tracking.</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="f-icon">🛡️</div>
+                        <div class="f-title">SAF & Shizuku Engine</div>
+                        <div class="f-desc">Smart permission handling tailored for Android 1–10 (SAF) and Android 11–17 (Shizuku wireless mode).</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="f-icon">🎨</div>
+                        <div class="f-title">6 Dynamic VIP Themes</div>
+                        <div class="f-desc">Personalize your dashboard instantly with 6 smooth themes, starting with our signature Clean Pearl White.</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="f-icon">☁️</div>
+                        <div class="f-title">Live Cloud Sync</div>
+                        <div class="f-desc">Protected by real-time server authentication, instant status updates, and smooth 60FPS animations.</div>
+                    </div>
+                </div>
+
+                <div class="glass-card dev-profile-card anim-item d-4">
+                    <div class="dev-info">
+                        <h3>Ganaie Hashim</h3>
+                        <p>Lead Developer & Platform Manager</p>
+                    </div>
+                    <span class="dev-tag">👑 Official Creator</span>
+                </div>
+
+                <div class="glass-card about-card anim-item d-5" onclick="openAboutSheet()">
+                    <div class="about-top">
+                        <span class="about-title">About this app</span>
+                        <span class="about-arrow">→</span>
+                    </div>
+                    <p class="about-preview">
+                        Read our complete platform overview, key features, important safety notice, and official disclaimer.
+                    </p>
+                </div>
+
+            </section>
+
+            <section id="tab-download" class="tab-section">
+
+                <div class="glass-card app-header-card anim-item d-1">
+                    <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/20260519_174024.png" alt="Unique Tool Icon" class="app-icon img-skeleton" onload="this.classList.add('img-loaded')">
+                    <div>
+                        <h2 class="app-name">Unique Tool</h2>
+                        <div class="app-dev">Unique Gamer</div>
+                        <div class="app-tag">• Official Release</div>
+                    </div>
+                </div>
+
+                <div class="stats-row anim-item d-2">
+                    <div class="stat-card">
+                        <span class="stat-label">Downloads</span>
+                        <span class="stat-value">100+</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Size</span>
+                        <span class="stat-value">8.44 MB</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Rating</span>
+                        <span class="stat-value" style="color: #FFD60A;">4.1 ★</span>
+                    </div>
+                </div>
+
+                <div class="anim-item d-3">
+                    <a href="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/UNIQUE%20TOOL.apk?download=true" id="downloadBtn" class="download-btn-main">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        <span id="downloadText">Download APK</span>
+                    </a>
+                </div>
+
+                <div class="anim-item d-4">
+                    <div class="section-heading">
+                        <span>Image Info</span>
+                        <span class="section-sub">Tap to zoom • Swipe →</span>
+                    </div>
+                    <div class="gallery">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20261025-174423.jpg" alt="Preview 1" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20261024-211728.jpg" alt="Preview 2" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20261024-211811.jpg" alt="Preview 3" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20260922-232406.jpg" alt="Preview 4" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20261024-211950.jpg" alt="Preview 5" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20261025-174616.jpg" alt="Preview 6" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                        <img src="https://huggingface.co/datasets/hashimganaie027/Unique_Army/resolve/main/Screenshot_20261025-174649.jpg" alt="Preview 7" class="screenshot img-skeleton" onload="this.classList.add('img-loaded')" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+
+                <div class="glass-card about-card anim-item d-5" onclick="openAboutSheet()">
+                    <div class="about-top">
+                        <span class="about-title">About this app</span>
+                        <span class="about-arrow">→</span>
+                    </div>
+                    <p class="about-preview">
+                        Welcome to our free app download platform! Tap here to read full features, safety notice, and disclaimer.
+                    </p>
+                </div>
+
+            </section>
+
+            <section id="tab-community" class="tab-section">
+
+                <div class="glass-card support-dm-card anim-item d-1">
+                    <div class="support-title">👋 Hello! Facing Any Problem?</div>
+                    <p class="support-desc">
+                        If you are experiencing any issue with the app, permissions, or setup, click the button below to message the developer directly on Instagram.
+                    </p>
+                    <a href="https://www.instagram.com/ganaie_hashim00?igsh=MWFvY3RobXg1eG1obg==" target="_blank" rel="noopener noreferrer" class="dm-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25zM12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                        <span>Report a Problem • DM on Instagram</span>
+                    </a>
+                </div>
+
+                <div class="section-heading anim-item d-2">
+                    <span>Instagram Accounts</span>
+                </div>
+                <div class="social-list anim-item d-2">
+                    <a href="https://www.instagram.com/ganaie_hashim00?igsh=MWFvY3RobXg1eG1obg==" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-insta">IG</div>
+                            <div>
+                                <div class="social-name">Ganaie Hashim</div>
+                                <div class="social-sub">@ganaie_hashim00 • Developer</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Follow →</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/kasheer_esports?igsh=YnptMnFobHlqZHIz" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-insta">IG</div>
+                            <div>
+                                <div class="social-name">Kasheer Esports</div>
+                                <div class="social-sub">@kasheer_esports</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Follow →</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/zaidbinhamza19?igsh=MXA0Z3g2bDd3ZWk0MQ==" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-insta">IG</div>
+                            <div>
+                                <div class="social-name">Zaid Bin Hamza</div>
+                                <div class="social-sub">@zaidbinhamza19</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Follow →</span>
+                    </a>
+                </div>
+
+                <div class="section-heading anim-item d-3">
+                    <span>YouTube Channels</span>
+                </div>
+                <div class="social-list anim-item d-3">
+                    <a href="https://www.youtube.com/@uniquegamer027" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-yt">▶</div>
+                            <div>
+                                <div class="social-name">Unique Gamer</div>
+                                <div class="social-sub">@uniquegamer027</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Subscribe →</span>
+                    </a>
+
+                    <a href="https://www.youtube.com/@kasheer_esports" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-yt">▶</div>
+                            <div>
+                                <div class="social-name">Kasheer Esports</div>
+                                <div class="social-sub">@kasheer_esports</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Subscribe →</span>
+                    </a>
+
+                    <a href="https://www.youtube.com/@zaidbinhamza19" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-yt">▶</div>
+                            <div>
+                                <div class="social-name">Zaid Bin Hamza</div>
+                                <div class="social-sub">@zaidbinhamza19</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Subscribe →</span>
+                    </a>
+                </div>
+
+                <div class="section-heading anim-item d-4">
+                    <span>Telegram, Kick & More</span>
+                </div>
+                <div class="social-list anim-item d-4">
+                    <a href="https://t.me/uniquearmy00" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-tg">TG</div>
+                            <div>
+                                <div class="social-name">Unique Army Telegram</div>
+                                <div class="social-sub">@uniquearmy00</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Join →</span>
+                    </a>
+
+                    <a href="https://t.me/nasheedsandnaatslyries" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-tg">TG</div>
+                            <div>
+                                <div class="social-name">Nasheeds & Naats Lyrics</div>
+                                <div class="social-sub">@nasheedsandnaatslyries</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Join →</span>
+                    </a>
+
+                    <a href="https://kick.com/kasheer-esports" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-kick">K</div>
+                            <div>
+                                <div class="social-name">Kasheer Esports on Kick</div>
+                                <div class="social-sub">kick.com/kasheer-esports</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Watch →</span>
+                    </a>
+
+                    <a href="https://whatsapp.com/channel/0029VbDDkgQFXUuSUKnkl23S" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-wa">WA</div>
+                            <div>
+                                <div class="social-name">WhatsApp Channel</div>
+                                <div class="social-sub">Official Updates Channel</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Join →</span>
+                    </a>
+
+                    <a href="https://www.snapchat.com/add/default_1127?share_id=088cKJcs4vk&locale=en-US" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-snap">👻</div>
+                            <div>
+                                <div class="social-name">Snapchat</div>
+                                <div class="social-sub">@default_1127</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Add →</span>
+                    </a>
+
+                    <a href="https://www.snapchat.com/add/ganaie_hashim00?share_id=A9wjgyH34ZI&locale=en-US" target="_blank" rel="noopener noreferrer" class="social-item">
+                        <div class="social-left">
+                            <div class="social-icon-box bg-snap">👻</div>
+                            <div>
+                                <div class="social-name">Snapchat (Developer)</div>
+                                <div class="social-sub">@ganaie_hashim00</div>
+                            </div>
+                        </div>
+                        <span class="social-go">Add →</span>
+                    </a>
+                </div>
+
+            </section>
+
+            <section id="tab-help" class="tab-section">
+
+                <div class="glass-card anim-item d-1">
+                    <div class="hero-badge">📘 Essential Pre-Setup Guide</div>
+                    <h2 style="font-size: 21px; font-weight: 800; margin-bottom: 8px;">Before You Open the App</h2>
+                    <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 16px;">
+                        After downloading and installing <strong>Unique Tool</strong>, please configure <strong>Shizuku</strong> first if your device runs Android 11 or higher. If you do not know how to set up and start Shizuku using Wireless Debugging, you can easily watch a step-by-step tutorial on YouTube.
+                    </p>
+                    <a href="https://www.youtube.com/results?search_query=how+to+setup+shizuku+wireless+debugging" target="_blank" rel="noopener noreferrer" class="btn-glass" style="width: 100%;">
+                        ▶ Watch Shizuku Setup Tutorial on YouTube
+                    </a>
+                </div>
+
+                <div class="section-heading anim-item d-2">
+                    <span>Which Permission Should You Choose?</span>
+                </div>
+
+                <div class="os-grid anim-item d-2">
+                    <div class="os-card">
+                        <span class="os-badge badge-saf">Android 1 to 10</span>
+                        <div class="os-title">Use SAF Permission</div>
+                        <p class="os-desc">
+                            If your phone runs on <strong>Android 1 through Android 10</strong>, simply grant the <strong>SAF (Storage Access Framework)</strong> permission when prompted inside the app.
+                        </p>
+                    </div>
+
+                    <div class="os-card">
+                        <span class="os-badge badge-shizuku">Android 11 to 17</span>
+                        <div class="os-title">Use Shizuku Only</div>
+                        <p class="os-desc">
+                            If your phone runs on <strong>Android 11 through Android 17</strong>, you must start Shizuku and grant <strong>Shizuku Permission</strong> inside the app.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="warning-banner anim-item d-3">
+                    <div class="warn-header">
+                        <span>⚠️ IMPORTANT WARNING FOR ANDROID 11–17 USERS</span>
+                    </div>
+                    <p class="warn-text">
+                        Please pay close attention: If your device is on <strong>Android 11, 12, 13, 14, 15, 16, or 17</strong>, you <strong>MUST</strong> select and grant the <strong>Shizuku Permission</strong> only. Do not use standard/SAF permission on Android 11–17, otherwise the system will block access to game folders and you will face errors!
+                    </p>
+                </div>
+
+                <div class="section-heading anim-item d-4">
+                    <span>How to Use Unique Tool</span>
+                </div>
+
+                <div class="glass-card step-card anim-item d-4">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>How to Download & Install</h4>
+                        <p>
+                            Go to the <strong>Download</strong> tab above and tap the <strong>Download APK</strong> button. Once downloaded, install the APK on your device, launch the app, and make sure your internet connection is turned on to verify server access.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card step-card anim-item d-5">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>How to Apply Hologram</h4>
+                        <p>
+                            Open the main control panel and grant the required permission based on your Android version (SAF for Android 1–10, or Shizuku for Android 11–17). Expand either the <strong>Free Fire Hologram</strong> or <strong>Free Fire Max Hologram</strong> section, turn ON the apply switch, and wait for the progress bar to reach 100%. Once completed, use the bottom quick-launch buttons to open your game.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card step-card anim-item d-6">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>How to Remove Hologram</h4>
+                        <p>
+                            Whenever you want to remove the Hologram and restore your clean directory, simply open the app and toggle ON the <strong>Remove Hologram</strong> switch for your game (Free Fire or Free Fire Max). Our built-in cleaner engine will scan the target folder, delete all applied Hologram files smoothly from 0% to 100%, and confirm when the cleanup is complete.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
         </div>
 
-        <div class="footer-col">
-          <h4>Security & Trust</h4>
-          <ul class="footer-list">
-            <li><i class="fa-solid fa-shield-halved"></i> 100% Fair Play & POV Verified</li>
-            <li><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted App</li>
-            <li><i class="fa-solid fa-bolt"></i> Fast 24/7 Prize Withdrawals</li>
-            <li><i class="fa-solid fa-user-check"></i> Responsible Skill Gaming</li>
-          </ul>
+        <footer class="site-footer">
+            ©Ganaie Hashim
+        </footer>
+
+    </main>
+
+    <div class="sheet-overlay" id="aboutSheet" onclick="closeAboutSheet()">
+        <div class="bottom-sheet" onclick="event.stopPropagation()">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+                <span class="sheet-title">About this app</span>
+                <button class="sheet-close" onclick="closeAboutSheet()">✕</button>
+            </div>
+
+            <div class="sheet-body">
+Welcome to our free app download platform! 🚀
+
+Our goal is to provide you with a simple, fast, and convenient downloading experience. With our platform, you can download and apply Hologram easily, manage it without unnecessary complications, and remove it whenever you want.
+
+⚡ Key Features
+• 100% Free: Enjoy our platform without download charges.
+• Fast Download Speed: Experience quick and smooth downloads.
+• Easy to Use: Download, apply, and remove Hologram with simple steps.
+• User-Friendly Experience: A simple interface designed to make everything easier.
+• Future Updates: Stay connected for upcoming updates, new features, and improvements.
+
+🛡️ Important Safety Notice
+Please carefully read all notifications, warnings, pop-up messages, and dialogue boxes displayed within the app before proceeding. Always follow the instructions provided and take appropriate precautions to help keep your account safe.
+
+Although we aim to provide a smooth and convenient experience, we cannot guarantee that your account will remain completely safe or that account-related issues will never occur.
+
+⚠️ Disclaimer
+Use this platform at your own discretion and responsibility. We are not responsible for account restrictions, blacklisting, bans, or other account-related consequences that may result from using Hologram or any associated features. Please understand the potential risks before using the platform.
+
+🔔 Stay Connected
+More updates, improvements, and exciting features are planned for the future. If you want to be part of our journey, download and explore our platform.
+
+Thank you for your support!
+
+Developed and Managed by: @GANAIE HASHIM
+            </div>
         </div>
-      </div>
-
-      <div class="disclaimer-box">
-        <p><strong>Disclaimer:</strong> Koshur Clash (Kasheer Esports Arena) is a skill-based esports tournament platform. Participation in tournaments is subject to fair-play guidelines and applicable local regulations.</p>
-        <p>&copy; 2026 Kasheer Esports Arena (Koshur Clash). All rights reserved.</p>
-      </div>
     </div>
-  </footer>
 
-  <div class="sticky-bar">
-    <div class="sticky-left">
-      <img 
-        src="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/file_00000000cac88210a0bca848510ed32f.png" 
-        alt="Koshur Clash Icon" 
-        class="sticky-logo-img"
-        width="42" 
-        height="42" 
-        decoding="async" 
-      />
-      <div class="sticky-meta">
-        <h5>Koshur Clash App</h5>
-        <span><span class="pulse-dot" style="width:6px;height:6px;"></span> Official Esports APK</span>
-      </div>
+    <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+        <img id="lightboxImg" src="" alt="Preview">
     </div>
-    <a href="https://huggingface.co/hashimganaie027/Koshur_Clash/resolve/main/Koshur%20Clash.apk?download=true" class="btn-sticky-get">
-      <i class="fa-solid fa-download"></i> Get App
-    </a>
-  </div>
 
-  <div class="modal-backdrop" id="installModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeInstallModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-      <h3 style="font-family:'Orbitron',sans-serif;font-size:18px;">How to Install Koshur Clash?</h3>
-      <ul class="step-list">
-        <li><strong>Step 1:</strong> Click on the <strong>Download Koshur Clash</strong> button to download the official `.apk` file.</li>
-        <li><strong>Step 2:</strong> Open the downloaded file from your browser's Downloads bar or File Manager.</li>
-        <li><strong>Step 3:</strong> If prompted by Android, enable <strong>"Install from Unknown Sources"</strong> in settings.</li>
-        <li><strong>Step 4:</strong> Tap <strong>Install</strong>, register your account, and start playing tournaments!</li>
-      </ul>
-    </div>
-  </div>
+    <script>
+        const skeletonLoader = document.getElementById('skeleton-loader');
+        const realContent = document.getElementById('real-content');
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    menuBtn.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
-    });
+        // Function to show Skeleton first, then reveal content smoothly
+        function triggerSkeletonReveal(duration = 900) {
+            skeletonLoader.classList.remove('hidden');
+            realContent.classList.add('loading-state');
 
-    function openInstallModal() {
-      document.getElementById('installModal').classList.add('active');
-    }
-    function closeInstallModal() {
-      document.getElementById('installModal').classList.remove('active');
-    }
+            setTimeout(() => {
+                skeletonLoader.classList.add('hidden');
+                realContent.classList.remove('loading-state');
 
-    const counters = document.querySelectorAll('.counter');
-    let hasAnimated = false;
-
-    function animateCounters() {
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const prefix = counter.getAttribute('data-prefix') || '';
-        const suffix = counter.getAttribute('data-suffix') || '';
-        const duration = 1500;
-        const startTime = performance.now();
-
-        function updateCount(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const currentVal = Math.floor(progress * target);
-          counter.innerText = prefix + currentVal.toLocaleString('en-IN') + suffix;
-
-          if (progress < 1) {
-            requestAnimationFrame(updateCount);
-          } else {
-            counter.innerText = prefix + target.toLocaleString('en-IN') + suffix;
-          }
+                // Replay iOS spring animation on active tab items
+                const activeSec = document.querySelector('.tab-section.active');
+                if (activeSec) {
+                    const animItems = activeSec.querySelectorAll('.anim-item');
+                    animItems.forEach(item => {
+                        item.style.animation = 'none';
+                        item.offsetHeight;
+                        item.style.animation = '';
+                    });
+                }
+            }, duration);
         }
-        requestAnimationFrame(updateCount);
-      });
-    }
 
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !hasAnimated) {
-            hasAnimated = true;
-            animateCounters();
-            observer.disconnect();
-          }
+        // Initial Page Load Skeleton
+        window.addEventListener('DOMContentLoaded', () => {
+            triggerSkeletonReveal(1100);
         });
-      }, { threshold: 0.25 });
 
-      observer.observe(document.getElementById('stats'));
-    } else {
-      animateCounters();
-    }
-  </script>
+        function switchTab(tabName, btnElement) {
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+
+            const sections = document.querySelectorAll('.tab-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const targetSection = document.getElementById('tab-' + tabName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Brief skeleton shimmer when switching tabs (450ms)
+            triggerSkeletonReveal(450);
+        }
+
+        function triggerTabClick(tabName) {
+            const btns = document.querySelectorAll('.nav-btn');
+            if (tabName === 'download') switchTab('download', btns[1]);
+            if (tabName === 'community') switchTab('community', btns[2]);
+            if (tabName === 'help') switchTab('help', btns[3]);
+        }
+
+        function openAboutSheet() {
+            document.getElementById('aboutSheet').classList.add('open');
+        }
+
+        function closeAboutSheet() {
+            document.getElementById('aboutSheet').classList.remove('open');
+        }
+
+        function zoomImage(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        const dlBtn = document.getElementById('downloadBtn');
+        const dlText = document.getElementById('downloadText');
+        if (dlBtn) {
+            dlBtn.addEventListener('click', function () {
+                dlText.textContent = "Starting Download...";
+                dlBtn.style.background = "#30D158";
+                setTimeout(() => {
+                    dlText.textContent = "Download APK";
+                    dlBtn.style.background = "linear-gradient(135deg, #0A84FF 0%, #0066CC 100%)";
+                }, 3500);
+            });
+        }
+    </script>
 </body>
 </html>
